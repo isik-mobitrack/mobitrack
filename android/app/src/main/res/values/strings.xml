@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MobiTrack</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="receiver">Receivers</string>
+
+
+    <!-- actions -->
+    <string name="create">Create</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="exit">Exit</string>
+
+
+    <!-- User registration -->
+    <string name="fill_your_info">Fill your info</string>
+    <string name="enter_user_name_warning">Please write a user name</string>
+    <string name="user_registration_error">Can not be registered</string>
+    <string name="user_registration_succesfull">Successfully registered</string>
+    <string name="user_name_hint">Username</string>
+    <string name="your_number">Your phone number with country code</string>
+
+    <!-- user list -->
+    <string name="no_friend">You have no friend. But you can add some.</string>
+    <string name="add_friend_hint">Phone number</string>
+    <string name="add_friend_message">Write phone number of your friend</string>
+    <string name="no_user">There is no user with the number you give</string>
+    <string name="add_error">There is an error while adding your friend</string>
+    <string name="sended_friendship_request">Friendship request was sent to %1$s</string>
+    <string name="location_services_error">Your current location is required for this application to work properly.</string>
+
+    <!-- user menu -->
+    <string name="add_user">Add user</string>
+    <string name="map_view">View on map</string>
+</resources>
