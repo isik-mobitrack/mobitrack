@@ -1,0 +1,74 @@
+//
+//  FriendsMapViewController.swift
+//  MobiTrack
+//
+//  Created by Buğra Öner on 22.04.2015.
+//  Copyright (c) 2015 Buğra Öner. All rights reserved.
+//
+
+import UIKit
+import MapKit
+import Parse
+
+class FriendsMapViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet var friendsMap: MKMapView!
+    
+    var parseManager: ParseManager = ParseManager()
+    var userDefaults = NSUserDefaults.standardUserDefaults()
+    var userPhoneNo: String?
+    var friendList: [User]?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userPhoneNo = userDefaults.objectForKey("userPhoneNo") as? String
+        friendList = parseManager.getFriends(userPhoneNo!)
+        showLocations()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+            pinView!.pinColor = .Green
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        return pinView
+    }
+    
+    func showLocations() {
+        let span = MKCoordinateSpanMake(0.03,0.03)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.168958, longitude: 29.562818), span: span)
+        friendsMap.setRegion(region, animated: true)
+        
+        for friend in friendList! {
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: friend.lastLocation!.latitude, longitude: friend.lastLocation!.longitude)
+            annotation.title = friend.username
+            friendsMap.addAnnotation(annotation)
+        }
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

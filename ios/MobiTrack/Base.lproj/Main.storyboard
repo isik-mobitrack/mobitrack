@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="84z-Ki-lPN">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Friend List-->
+        <scene sceneID="bk0-L2-nyB">
+            <objects>
+                <tableViewController id="8yC-1A-pEd" customClass="FriendListTableViewController" customModule="MobiTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gQ1-Kq-xJm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" id="EcL-Gv-NDo">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EcL-Gv-NDo" id="Lsa-Ye-18x">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cR8-Bj-OIB" kind="show" id="LMK-f9-X05"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8yC-1A-pEd" id="K3B-fh-RLj"/>
+                            <outlet property="delegate" destination="8yC-1A-pEd" id="zCE-R1-WsV"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Friend List" image="Groups-32.png" id="PCi-S5-Hyk"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IdU-YX-BfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590" y="-185"/>
+        </scene>
+        <!--Users Last Locations View Controller-->
+        <scene sceneID="L9d-uN-aOr">
+            <objects>
+                <viewController id="cR8-Bj-OIB" customClass="UsersLastLocationsViewController" customModule="MobiTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X3P-3N-Vc4"/>
+                        <viewControllerLayoutGuide type="bottom" id="PLM-2E-vVQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V7i-Su-83t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Al7-gx-t8z">
+                                <rect key="frame" x="16" y="64" width="568" height="492"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cR8-Bj-OIB" id="Se3-Cw-jbw"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Al7-gx-t8z" secondAttribute="trailing" id="5Y8-bB-7EO"/>
+                            <constraint firstItem="Al7-gx-t8z" firstAttribute="leading" secondItem="V7i-Su-83t" secondAttribute="leadingMargin" id="f3e-aZ-8YM"/>
+                            <constraint firstItem="Al7-gx-t8z" firstAttribute="top" secondItem="X3P-3N-Vc4" secondAttribute="bottom" id="gWk-hf-07O"/>
+                            <constraint firstItem="PLM-2E-vVQ" firstAttribute="top" secondItem="Al7-gx-t8z" secondAttribute="bottom" id="oZj-yv-vgo"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="HPJ-Ul-8xm"/>
+                    <connections>
+                        <outlet property="userMap" destination="Al7-gx-t8z" id="jMP-6m-mWu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFJ-Bd-RYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1389" y="-185"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="DWV-lW-XbT">
+            <objects>
+                <viewController id="00R-zd-eJp" customClass="FriendsMapViewController" customModule="MobiTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xm3-rb-G5g"/>
+                        <viewControllerLayoutGuide type="bottom" id="eZ9-cC-tV9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tBL-LZ-Olt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vG8-oU-Y6i">
+                                <rect key="frame" x="16" y="64" width="568" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="00R-zd-eJp" id="edC-Dw-N6L"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eZ9-cC-tV9" firstAttribute="top" secondItem="vG8-oU-Y6i" secondAttribute="bottom" id="5eL-GA-pkJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vG8-oU-Y6i" secondAttribute="trailing" id="JVe-ib-qVO"/>
+                            <constraint firstItem="vG8-oU-Y6i" firstAttribute="top" secondItem="xm3-rb-G5g" secondAttribute="bottom" id="gQ9-KP-joC"/>
+                            <constraint firstItem="vG8-oU-Y6i" firstAttribute="leading" secondItem="tBL-LZ-Olt" secondAttribute="leadingMargin" id="vAG-rJ-bZs"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="Google Earth-32.png" id="7zU-P4-jFa"/>
+                    <connections>
+                        <outlet property="friendsMap" destination="vG8-oU-Y6i" id="hVu-pE-qN2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWa-a1-gTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590" y="533"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cmr-Uj-gDL">
+            <objects>
+                <navigationController id="84z-Ki-lPN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fWJ-AJ-KxN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jzt-pj-B7g" kind="relationship" relationship="rootViewController" id="eJF-3s-cvT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUs-2N-YQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1136" y="204"/>
+        </scene>
+        <!--MobiTrack-->
+        <scene sceneID="HcI-9p-rXp">
+            <objects>
+                <tabBarController id="jzt-pj-B7g" customClass="AddFriendViewController" customModule="MobiTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="MobiTrack" id="mJU-tb-oEm">
+                        <barButtonItem key="leftBarButtonItem" image="High Importance-32.png" id="Lb5-Aa-oQZ">
+                            <connections>
+                                <action selector="sendMessage:" destination="jzt-pj-B7g" id="Q1p-lb-oE6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qfr-jb-gav">
+                            <connections>
+                                <action selector="addFriend:" destination="jzt-pj-B7g" id="Vqi-GS-c7X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xbc-1a-yRH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8yC-1A-pEd" kind="relationship" relationship="viewControllers" id="hIv-Ba-8Cf"/>
+                        <segue destination="00R-zd-eJp" kind="relationship" relationship="viewControllers" id="BCJ-tB-tDO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="no3-aD-HjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-205" y="204"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Google Earth-32.png" width="32" height="32"/>
+        <image name="Groups-32.png" width="32" height="32"/>
+        <image name="High Importance-32.png" width="32" height="32"/>
+    </resources>
+</document>
