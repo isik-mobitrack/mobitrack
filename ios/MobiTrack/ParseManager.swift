@@ -74,7 +74,7 @@ class ParseManager{
         }
     }
     
-    func getFriends(userPhoneNo: String) -> [User]{
+    func getFriends(userPhoneNo: String) -> [User] {
         var users = [User]()
         var userPhoneNos: [String] = getFriendsPhoneNo(userPhoneNo)
         var query = PFQuery(className: "user")
@@ -85,6 +85,29 @@ class ParseManager{
             users.append(user)
         }
         return users
+    }
+    
+    func getFriendshipRequests(userPhoneNo: String) -> [User] {
+        var friendshipRequests = [User]()
+        var query = PFQuery(className: "friendship")
+        query.whereKey("reciever", equalTo: userPhoneNo)
+        query.whereKey("status", equalTo: 0)
+        var objects = query.findObjects()
+        
+        var senderPhones: [String] = [String]()
+        for obj in objects! {
+            senderPhones.append(obj["sender"] as! String)
+        }
+        
+        query = PFQuery(className: "user")
+        query.whereKey("phone", containedIn: senderPhones)
+        
+        objects = query.findObjects()
+        for obj in objects! {
+            var user = User(phoneNo: obj["phone"] as! String!, username: obj["username"] as! String!, lastLocation: obj["lastLocation"] as! PFGeoPoint)
+            friendshipRequests.append(user)
+        }
+        return friendshipRequests
     }
     
     func getFriendsPhoneNo(userPhoneNo: String) -> [String] {
@@ -144,6 +167,19 @@ class ParseManager{
             locationsTable.save()
             
             println("LOCATION UPDATED")
+        }
+    }
+    
+    func applyFriendshipRequest(sender: String, reciever: String, status: Int) {
+        var query = PFQuery(className: "friendship")
+        query.whereKey("sender", equalTo: sender)
+        query.whereKey("reciever", equalTo: reciever)
+        
+        var objects = query.findObjects()
+        for obj in objects! {
+            var friendship: PFObject = obj as! PFObject
+            friendship["status"] = status
+            friendship.saveInBackground()
         }
     }
     

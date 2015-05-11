@@ -22,7 +22,8 @@ class UsersLastLocationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = user!.username
-        showLocations()
+        //showLocations()
+        zoomToFitMapAnnotations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +46,48 @@ class UsersLastLocationsViewController: UIViewController {
         
     }
     
+    func zoomToFitMapAnnotations(){
+        
+        var locationsOfUser = parseManager.getLocationsOfUser(user!.phoneNo!)
+        
+        if locationsOfUser.isEmpty {
+            return
+        }
+        
+        var topLeftCoord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: -90, longitude: 180)
+        
+        var bottomRightCoord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+        
+        
+        for location in locationsOfUser {
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, location.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, location.latitude)
+            
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, location.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, location.latitude)
+            
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            
+            
+            
+            self.userMap!.addAnnotation(annotation)
+        }
+        
+        var centerLat = (topLeftCoord.latitude + bottomRightCoord.latitude) / 2
+        var centerLong = (topLeftCoord.longitude + bottomRightCoord.longitude) / 2
+        
+        var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong), span:MKCoordinateSpan(latitudeDelta: 0, longitudeDelta: 0))
+        region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 2
+        region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 2
+        
+        self.userMap!.regionThatFits(region)
+        self.userMap!.setRegion(region, animated: true)
+        
+        
+    }
 
+    
 
     /*
     // MARK: - Navigation
