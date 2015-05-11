@@ -65,7 +65,7 @@ public class FriendsOnMap extends Fragment {
             builder.include(u.location);
         }
         LatLngBounds bounds=builder.build();
-        final CameraUpdate cu= CameraUpdateFactory.newLatLngBounds(bounds,30);
+        final CameraUpdate cu= CameraUpdateFactory.newLatLngBounds(bounds,50);
         mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {

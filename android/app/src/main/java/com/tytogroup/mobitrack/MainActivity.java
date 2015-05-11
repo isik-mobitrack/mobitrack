@@ -23,6 +23,7 @@ import com.parse.ParseObject;
 import com.parse.SaveCallback;
 import com.tytogroup.mobitrack.location.FriendsOnMap;
 import com.tytogroup.mobitrack.location.MyLocation;
+import com.tytogroup.mobitrack.location.NearbyLocationsOnMap;
 import com.tytogroup.mobitrack.user.AllFriendships;
 import com.tytogroup.mobitrack.user.AllUsers;
 import com.tytogroup.mobitrack.user.User;
@@ -141,12 +142,15 @@ public class MainActivity extends ActionBarActivity {
             toList.setVisible(false);
             getSupportFragmentManager().popBackStack();
         }else if(id==R.id.action_map_view){
-            if(friendsMap==null){
+           /* if(friendsMap==null){
                 friendsMap=new FriendsOnMap();
             }
             toMap.setVisible(false);
-            toList.setVisible(true);
+            toList.setVisible(true);*
             getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,friendsMap).commit();
+       */
+            NearbyLocationsOnMap nearLocations=new NearbyLocationsOnMap();
+            getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,nearLocations).commit();
         }
 
         return super.onOptionsItemSelected(item);
