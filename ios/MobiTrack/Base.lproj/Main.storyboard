@@ -14,10 +14,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" id="EcL-Gv-NDo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" textLabel="DT1-hh-bes" detailTextLabel="hdg-Wa-Hwx" style="IBUITableViewCellStyleSubtitle" id="EcL-Gv-NDo">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EcL-Gv-NDo" id="Lsa-Ye-18x">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DT1-hh-bes">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdg-Wa-Hwx">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="cR8-Bj-OIB" kind="show" id="LMK-f9-X05"/>
@@ -35,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IdU-YX-BfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-185"/>
+            <point key="canvasLocation" x="590" y="-677"/>
         </scene>
         <!--Users Last Locations View Controller-->
         <scene sceneID="L9d-uN-aOr">
@@ -49,8 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Al7-gx-t8z">
-                                <rect key="frame" x="16" y="64" width="568" height="492"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Al7-gx-t8z">
+                                <rect key="frame" x="-4" y="64" width="608" height="487"/>
                                 <connections>
                                     <outlet property="delegate" destination="cR8-Bj-OIB" id="Se3-Cw-jbw"/>
                                 </connections>
@@ -58,8 +72,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Al7-gx-t8z" secondAttribute="trailing" id="5Y8-bB-7EO"/>
-                            <constraint firstItem="Al7-gx-t8z" firstAttribute="leading" secondItem="V7i-Su-83t" secondAttribute="leadingMargin" id="f3e-aZ-8YM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Al7-gx-t8z" secondAttribute="trailing" constant="-20" id="5Y8-bB-7EO"/>
+                            <constraint firstItem="Al7-gx-t8z" firstAttribute="leading" secondItem="V7i-Su-83t" secondAttribute="leadingMargin" constant="-20" id="f3e-aZ-8YM"/>
                             <constraint firstItem="Al7-gx-t8z" firstAttribute="top" secondItem="X3P-3N-Vc4" secondAttribute="bottom" id="gWk-hf-07O"/>
                             <constraint firstItem="PLM-2E-vVQ" firstAttribute="top" secondItem="Al7-gx-t8z" secondAttribute="bottom" id="oZj-yv-vgo"/>
                         </constraints>
@@ -72,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFJ-Bd-RYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1389" y="-185"/>
+            <point key="canvasLocation" x="1581" y="-617"/>
         </scene>
         <!--Map-->
         <scene sceneID="DWV-lW-XbT">
@@ -87,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vG8-oU-Y6i">
-                                <rect key="frame" x="16" y="64" width="568" height="487"/>
+                                <rect key="frame" x="-4" y="64" width="608" height="487"/>
                                 <connections>
                                     <outlet property="delegate" destination="00R-zd-eJp" id="edC-Dw-N6L"/>
                                 </connections>
@@ -96,9 +110,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eZ9-cC-tV9" firstAttribute="top" secondItem="vG8-oU-Y6i" secondAttribute="bottom" id="5eL-GA-pkJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vG8-oU-Y6i" secondAttribute="trailing" id="JVe-ib-qVO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vG8-oU-Y6i" secondAttribute="trailing" constant="-20" id="JVe-ib-qVO"/>
                             <constraint firstItem="vG8-oU-Y6i" firstAttribute="top" secondItem="xm3-rb-G5g" secondAttribute="bottom" id="gQ9-KP-joC"/>
-                            <constraint firstItem="vG8-oU-Y6i" firstAttribute="leading" secondItem="tBL-LZ-Olt" secondAttribute="leadingMargin" id="vAG-rJ-bZs"/>
+                            <constraint firstItem="vG8-oU-Y6i" firstAttribute="leading" secondItem="tBL-LZ-Olt" secondAttribute="leadingMargin" constant="-20" id="vAG-rJ-bZs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="Google Earth-32.png" id="7zU-P4-jFa"/>
@@ -108,7 +122,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWa-a1-gTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="533"/>
+            <point key="canvasLocation" x="634" y="204"/>
+        </scene>
+        <!--S.O.S-->
+        <scene sceneID="nnA-rT-394">
+            <objects>
+                <viewController id="aXV-iN-8FX" customClass="EmergencyViewController" customModule="MobiTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CvC-sT-Kdq"/>
+                        <viewControllerLayoutGuide type="bottom" id="pOY-tT-yjU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pmj-Vq-6rp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hdE-gH-cV8">
+                                <rect key="frame" x="-4" y="64" width="608" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aXV-iN-8FX" id="NYD-zW-f1t"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hdE-gH-cV8" secondAttribute="trailing" constant="-20" id="Xi6-dd-F5c"/>
+                            <constraint firstItem="hdE-gH-cV8" firstAttribute="leading" secondItem="pmj-Vq-6rp" secondAttribute="leadingMargin" constant="-20" id="dc0-c0-VKJ"/>
+                            <constraint firstItem="pOY-tT-yjU" firstAttribute="top" secondItem="hdE-gH-cV8" secondAttribute="bottom" id="e9X-D2-sJc"/>
+                            <constraint firstItem="hdE-gH-cV8" firstAttribute="top" secondItem="CvC-sT-Kdq" secondAttribute="bottom" id="gzH-sm-kam"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="S.O.S" image="Warning Shield Filled-32.png" id="5a9-DM-AvU"/>
+                    <connections>
+                        <outlet property="sosMap" destination="hdE-gH-cV8" id="eJJ-Ic-rSL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJ5-hk-c2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="1027"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cmr-Uj-gDL">
@@ -151,6 +201,7 @@
                     <connections>
                         <segue destination="8yC-1A-pEd" kind="relationship" relationship="viewControllers" id="hIv-Ba-8Cf"/>
                         <segue destination="00R-zd-eJp" kind="relationship" relationship="viewControllers" id="BCJ-tB-tDO"/>
+                        <segue destination="aXV-iN-8FX" kind="relationship" relationship="viewControllers" id="F41-B2-VD0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="no3-aD-HjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,5 +213,6 @@
         <image name="Google Earth-32.png" width="32" height="32"/>
         <image name="Groups-32.png" width="32" height="32"/>
         <image name="High Importance-32.png" width="32" height="32"/>
+        <image name="Warning Shield Filled-32.png" width="32" height="32"/>
     </resources>
 </document>

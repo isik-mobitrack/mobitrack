@@ -11,6 +11,10 @@
 		7D63208B1AE7A0E300E5969D /* UsersLastLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D63208A1AE7A0E300E5969D /* UsersLastLocationsViewController.swift */; };
 		7D63208D1AE7C1E600E5969D /* FriendsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D63208C1AE7C1E600E5969D /* FriendsMapViewController.swift */; };
 		7D85FBBF1AE6C71500D42779 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D85FBBE1AE6C71500D42779 /* ParseManager.swift */; };
+		7DA2A0AD1AFFF32D00054DFC /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2A0AC1AFFF32D00054DFC /* EmergencyViewController.swift */; };
+		7DA2A0AF1AFFFFED00054DFC /* PlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2A0AE1AFFFFED00054DFC /* PlaceType.swift */; };
+		7DA2A0B11B000C5200054DFC /* police.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA2A0B01B000C5200054DFC /* police.png */; };
+		7DA2A0B31B000C5B00054DFC /* hospital.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA2A0B21B000C5B00054DFC /* hospital.png */; };
 		7DAF26C41AE122B100B85A2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAF26C31AE122B100B85A2D /* AppDelegate.swift */; };
 		7DAF26C91AE122B100B85A2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAF26C71AE122B100B85A2D /* Main.storyboard */; };
 		7DAF26CB1AE122B100B85A2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DAF26CA1AE122B100B85A2D /* Images.xcassets */; };
@@ -25,12 +29,13 @@
 		7DAF26F01AE1237900B85A2D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26EF1AE1237900B85A2D /* MobileCoreServices.framework */; };
 		7DAF26F21AE1238200B85A2D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26F11AE1238200B85A2D /* QuartzCore.framework */; };
 		7DAF26F41AE1238A00B85A2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26F31AE1238A00B85A2D /* Security.framework */; };
-		7DAF26F61AE1239400B85A2D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26F51AE1239400B85A2D /* StoreKit.framework */; };
 		7DAF26F81AE1239E00B85A2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26F71AE1239E00B85A2D /* SystemConfiguration.framework */; };
 		7DAF26FA1AE123A900B85A2D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26F91AE123A900B85A2D /* libz.dylib */; };
 		7DAF26FC1AE123CA00B85A2D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAF26FB1AE123CA00B85A2D /* libsqlite3.dylib */; };
 		7DAF26FF1AE1301900B85A2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAF26FE1AE1301900B85A2D /* User.swift */; };
 		7DAF27011AE1346300B85A2D /* Friendship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAF27001AE1346300B85A2D /* Friendship.swift */; };
+		7DB32E831B0098C600F1E170 /* Warning Shield Filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB32E821B0098C600F1E170 /* Warning Shield Filled-32.png */; };
+		7DB32E851B009CA500F1E170 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB32E841B009CA500F1E170 /* CurrentLocation.swift */; };
 		7DDE75AE1AEA73C5006A2672 /* Google Earth-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE75AD1AEA73C5006A2672 /* Google Earth-32.png */; };
 		7DDE75B01AEA745D006A2672 /* Groups-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE75AF1AEA745D006A2672 /* Groups-32.png */; };
 		7DDE75B81AEA7ADD006A2672 /* High Importance-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE75B71AEA7ADD006A2672 /* High Importance-32.png */; };
@@ -52,6 +57,10 @@
 		7D63208A1AE7A0E300E5969D /* UsersLastLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersLastLocationsViewController.swift; sourceTree = "<group>"; };
 		7D63208C1AE7C1E600E5969D /* FriendsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsMapViewController.swift; sourceTree = "<group>"; };
 		7D85FBBE1AE6C71500D42779 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
+		7DA2A0AC1AFFF32D00054DFC /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
+		7DA2A0AE1AFFFFED00054DFC /* PlaceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceType.swift; path = ../PlaceType.swift; sourceTree = "<group>"; };
+		7DA2A0B01B000C5200054DFC /* police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = police.png; sourceTree = "<group>"; };
+		7DA2A0B21B000C5B00054DFC /* hospital.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hospital.png; sourceTree = "<group>"; };
 		7DAF26BE1AE122B100B85A2D /* MobiTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobiTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAF26C21AE122B100B85A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DAF26C31AE122B100B85A2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,12 +79,13 @@
 		7DAF26EF1AE1237900B85A2D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7DAF26F11AE1238200B85A2D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7DAF26F31AE1238A00B85A2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		7DAF26F51AE1239400B85A2D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7DAF26F71AE1239E00B85A2D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7DAF26F91AE123A900B85A2D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7DAF26FB1AE123CA00B85A2D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7DAF26FE1AE1301900B85A2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7DAF27001AE1346300B85A2D /* Friendship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friendship.swift; sourceTree = "<group>"; };
+		7DB32E821B0098C600F1E170 /* Warning Shield Filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Warning Shield Filled-32.png"; sourceTree = "<group>"; };
+		7DB32E841B009CA500F1E170 /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 		7DDE75AD1AEA73C5006A2672 /* Google Earth-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Google Earth-32.png"; sourceTree = "<group>"; };
 		7DDE75AF1AEA745D006A2672 /* Groups-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Groups-32.png"; sourceTree = "<group>"; };
 		7DDE75B71AEA7ADD006A2672 /* High Importance-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "High Importance-32.png"; sourceTree = "<group>"; };
@@ -90,7 +100,6 @@
 				7DAF26FC1AE123CA00B85A2D /* libsqlite3.dylib in Frameworks */,
 				7DAF26FA1AE123A900B85A2D /* libz.dylib in Frameworks */,
 				7DAF26F81AE1239E00B85A2D /* SystemConfiguration.framework in Frameworks */,
-				7DAF26F61AE1239400B85A2D /* StoreKit.framework in Frameworks */,
 				7DAF26F41AE1238A00B85A2D /* Security.framework in Frameworks */,
 				7DAF26F21AE1238200B85A2D /* QuartzCore.framework in Frameworks */,
 				7DAF26F01AE1237900B85A2D /* MobileCoreServices.framework in Frameworks */,
@@ -138,16 +147,22 @@
 				7DAF26E31AE1231700B85A2D /* Bolts.framework */,
 				7DAF26E41AE1231700B85A2D /* Parse.framework */,
 				7DDE75AD1AEA73C5006A2672 /* Google Earth-32.png */,
+				7DA2A0B21B000C5B00054DFC /* hospital.png */,
+				7DB32E821B0098C600F1E170 /* Warning Shield Filled-32.png */,
+				7DA2A0B01B000C5200054DFC /* police.png */,
 				7DDE75B71AEA7ADD006A2672 /* High Importance-32.png */,
 				7DDE75AF1AEA745D006A2672 /* Groups-32.png */,
 				7DAF26C31AE122B100B85A2D /* AppDelegate.swift */,
 				7D5E7E671AE8139D0035C79F /* AddFriendViewController.swift */,
 				7DDF93F91AE6DC5000A0FCC2 /* FriendListTableViewController.swift */,
+				7DB32E841B009CA500F1E170 /* CurrentLocation.swift */,
 				7D63208C1AE7C1E600E5969D /* FriendsMapViewController.swift */,
+				7DA2A0AC1AFFF32D00054DFC /* EmergencyViewController.swift */,
 				7D63208A1AE7A0E300E5969D /* UsersLastLocationsViewController.swift */,
 				7D85FBBE1AE6C71500D42779 /* ParseManager.swift */,
 				7DAF27001AE1346300B85A2D /* Friendship.swift */,
 				7DAF26FE1AE1301900B85A2D /* User.swift */,
+				7DA2A0AE1AFFFFED00054DFC /* PlaceType.swift */,
 				7DAF26C71AE122B100B85A2D /* Main.storyboard */,
 				7DAF26CA1AE122B100B85A2D /* Images.xcassets */,
 				7DAF26CC1AE122B100B85A2D /* LaunchScreen.xib */,
@@ -187,7 +202,6 @@
 				7DAF26FB1AE123CA00B85A2D /* libsqlite3.dylib */,
 				7DAF26F91AE123A900B85A2D /* libz.dylib */,
 				7DAF26F71AE1239E00B85A2D /* SystemConfiguration.framework */,
-				7DAF26F51AE1239400B85A2D /* StoreKit.framework */,
 				7DAF26F31AE1238A00B85A2D /* Security.framework */,
 				7DAF26F11AE1238200B85A2D /* QuartzCore.framework */,
 				7DAF26EF1AE1237900B85A2D /* MobileCoreServices.framework */,
@@ -248,6 +262,15 @@
 				TargetAttributes = {
 					7DAF26BD1AE122B100B85A2D = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 552Z8JYXH2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					7DAF26D21AE122B100B85A2D = {
 						CreatedOnToolsVersion = 6.3;
@@ -280,7 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DAF26C91AE122B100B85A2D /* Main.storyboard in Resources */,
+				7DA2A0B11B000C5200054DFC /* police.png in Resources */,
+				7DB32E831B0098C600F1E170 /* Warning Shield Filled-32.png in Resources */,
 				7DDE75AE1AEA73C5006A2672 /* Google Earth-32.png in Resources */,
+				7DA2A0B31B000C5B00054DFC /* hospital.png in Resources */,
 				7DAF26CE1AE122B100B85A2D /* LaunchScreen.xib in Resources */,
 				7DDE75B01AEA745D006A2672 /* Groups-32.png in Resources */,
 				7DAF26CB1AE122B100B85A2D /* Images.xcassets in Resources */,
@@ -306,10 +332,13 @@
 				7D85FBBF1AE6C71500D42779 /* ParseManager.swift in Sources */,
 				7DAF26C41AE122B100B85A2D /* AppDelegate.swift in Sources */,
 				7DDF93FA1AE6DC5000A0FCC2 /* FriendListTableViewController.swift in Sources */,
+				7DB32E851B009CA500F1E170 /* CurrentLocation.swift in Sources */,
 				7D63208D1AE7C1E600E5969D /* FriendsMapViewController.swift in Sources */,
+				7DA2A0AD1AFFF32D00054DFC /* EmergencyViewController.swift in Sources */,
 				7DAF26FF1AE1301900B85A2D /* User.swift in Sources */,
 				7D63208B1AE7A0E300E5969D /* UsersLastLocationsViewController.swift in Sources */,
 				7DAF27011AE1346300B85A2D /* Friendship.swift in Sources */,
+				7DA2A0AF1AFFFFED00054DFC /* PlaceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
