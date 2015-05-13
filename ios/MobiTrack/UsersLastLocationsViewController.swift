@@ -10,40 +10,52 @@ import UIKit
 import Parse
 import MapKit
 
-class UsersLastLocationsViewController: UIViewController {
+class UsersLastLocationsViewController: UIViewController, UIPopoverControllerDelegate {
     
     @IBOutlet var userMap: MKMapView!
     
+    var popUpView: UITextView?
+    
     var parseManager = ParseManager()
     var user: User?
+    var isFriend: Bool?
     var longitude: Double?
     var latitude: Double?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = user!.username
-        //showLocations()
-        zoomToFitMapAnnotations()
+        
+        if isFriend! {
+            zoomToFitMapAnnotations()
+        }
+        else {
+            showPopUp()
+        }
+    }
+    
+    func showPopUp() {
+        popUpView = UITextView(frame: CGRect(x: 0, y: self.view.center.y-100, width: self.view.bounds.width, height: 40))
+        popUpView!.text = "You should accept friendship request to see locations of \(self.user!.username!)"
+        popUpView?.editable = false
+        popUpView!.textColor = UIColor.darkTextColor()
+        popUpView!.backgroundColor = UIColor.redColor()
+        popUpView!.alpha = 1.0
+        self.view.addSubview(popUpView!)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("hidePopUp"), userInfo: nil, repeats: false)
+    }
+    
+    func hidePopUp() {
+        UIView.animateWithDuration(4, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.popUpView?.alpha = 0.0
+            }, completion: nil)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func showLocations() {
-        let span = MKCoordinateSpanMake(0.3,0.3)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.168958, longitude: 29.562818), span: span)
-        userMap.setRegion(region, animated: true)
-        var locationsOfUser = parseManager.getLocationsOfUser(user!.phoneNo!)
-        for location in locationsOfUser {
-            var annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            annotation.title = user!.username
-            userMap.addAnnotation(annotation)
-        }
-        
     }
     
     func zoomToFitMapAnnotations(){

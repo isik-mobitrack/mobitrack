@@ -74,7 +74,7 @@ class EmergencyViewController: UIViewController, MKMapViewDelegate {
             let datas =  jsonObject.valueForKey("results")! as! NSArray
             
             for dictData : AnyObject in datas{
-                let dictEach = dictData as! NSDictionary;
+                let dictEach = dictData as! NSDictionary
                 let name = dictEach.valueForKey("name")! as! NSString
                 println(name)
                 let geometry = dictEach.valueForKey("geometry")! as! NSDictionary

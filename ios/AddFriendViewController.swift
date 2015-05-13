@@ -40,8 +40,33 @@ class AddFriendViewController: UITabBarController, MFMessageComposeViewControlle
         }
         
         var addFriendAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { UIAlertAction in
+            
+            var userPhoneNo = self.userDefaults.objectForKey("userPhoneNo") as! String
+            
             if self.parseManager.isUserInParse(recieverPhoneNoTextField!.text!) {
-                self.parseManager.sendFriendshipRequest(recieverPhoneNoTextField!.text!)
+                var (status,user) = self.parseManager.friendshipStatus(userPhoneNo, user2: recieverPhoneNoTextField!.text!)
+                if status == 0 {
+                    if user == 1 {
+                        self.addFriendAlert("You already sent a friendship request")
+                    }
+                    else {
+                        self.addFriendAlert("You already have a friendship request from this user")
+                    }
+                }
+                else if status == 1 {
+                    if user == 1 {
+                        self.addFriendAlert("You cannot send friendship request to this user")
+                    }
+                    else {
+                        self.parseManager.sendFriendshipRequest(recieverPhoneNoTextField!.text!)
+                    }
+                }
+                else if status == 2 {
+                    self.addFriendAlert("Already friend !")
+                }
+                else {
+                    self.parseManager.sendFriendshipRequest(recieverPhoneNoTextField!.text!)
+                }
             }
             else {
                 self.addFriendAlert("There is no user with this phone number !")
@@ -56,7 +81,7 @@ class AddFriendViewController: UITabBarController, MFMessageComposeViewControlle
     }
     
     @IBAction func addFriend(sender: UIBarButtonItem) {
-        addFriendAlert("Enter a phone number")
+        addFriendAlert("Add Friend")
     }
     
     @IBAction func sendMessage(sender: UIBarButtonItem) {

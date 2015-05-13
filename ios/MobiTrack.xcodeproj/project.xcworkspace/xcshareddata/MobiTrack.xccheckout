@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>263C510D-3CE2-4970-8CA8-53C1E890C065</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MobiTrack</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BE58FD9B47A11BCF9DB57A4513C254F281724146</key>
+		<string>https://github.com/isik-mobitrack/mobitrack.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MobiTrack.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BE58FD9B47A11BCF9DB57A4513C254F281724146</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/isik-mobitrack/mobitrack.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BE58FD9B47A11BCF9DB57A4513C254F281724146</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BE58FD9B47A11BCF9DB57A4513C254F281724146</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MobiTrack</string>
+		</dict>
+	</array>
+</dict>
+</plist>

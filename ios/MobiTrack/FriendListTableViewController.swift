@@ -15,6 +15,8 @@ class FriendListTableViewController: UITableViewController, CLLocationManagerDel
     
     var locationUpdated: Bool = false
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    
     var parseManager: ParseManager = ParseManager()
     var locationManager = CLLocationManager()
     var userDefaults = NSUserDefaults.standardUserDefaults()
@@ -27,8 +29,13 @@ class FriendListTableViewController: UITableViewController, CLLocationManagerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeLocationManager()
         
+        activityIndicator.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 10, height: 10)
+        activityIndicator.color = UIColor.blueColor()
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        
+        initializeLocationManager()
         if !parseManager.isUserExist() {
             enterUserInfoAlert()
         }
@@ -165,8 +172,17 @@ class FriendListTableViewController: UITableViewController, CLLocationManagerDel
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailCell = sender as! UITableViewCell
         let index = self.tableView.indexPathForCell(detailCell)?.row
+        let section = self.tableView.indexPathForCell(detailCell)?.section
         var dvc = segue.destinationViewController as! UsersLastLocationsViewController
-        dvc.user = friendList[index!]
+        
+        if section == 0 {
+            dvc.user = friendList[index!]
+            dvc.isFriend = true
+        }
+        else if section == 1 {
+            dvc.user = friendshipRequests[index!]
+            dvc.isFriend = false
+        }
     }
     
     
@@ -271,6 +287,7 @@ class FriendListTableViewController: UITableViewController, CLLocationManagerDel
             var currentLocation = CLLocationCoordinate2D(latitude: self.locationOfUser.latitude, longitude: self.locationOfUser.longitude)
             CurrentLocation.lastLocation = currentLocation
         }
+        self.activityIndicator.stopAnimating()
         
         self.tableView.reloadData()
     }

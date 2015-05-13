@@ -74,6 +74,30 @@ class ParseManager{
         }
     }
     
+    func friendshipStatus(user1: String, user2: String) -> (Int,Int) {
+        var query = PFQuery(className: "friendship")
+        query.whereKey("sender", equalTo: user1)
+        query.whereKey("reciever", equalTo: user2)
+        var objects = query.findObjects()
+        if objects?.count != 0 {
+            for obj in objects! {
+                var status = obj["status"] as! Int
+                return (status,1)
+            }
+        }
+        
+        query.whereKey("sender", equalTo: user2)
+        query.whereKey("reciever", equalTo: user1)
+        objects = query.findObjects()
+        if objects?.count != 0 {
+            for obj in objects! {
+                var status = obj["status"] as! Int
+                return (status,2)
+            }
+        }
+        return (-1,-1)
+    }
+    
     func getFriends(userPhoneNo: String) -> [User] {
         var users = [User]()
         var userPhoneNos: [String] = getFriendsPhoneNo(userPhoneNo)
