@@ -12,15 +12,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
+import com.tytogroup.mobitrack.location.FriendsLastLocationsOnMap;
 import com.tytogroup.mobitrack.location.FriendsOnMap;
 import com.tytogroup.mobitrack.location.MyLocation;
 import com.tytogroup.mobitrack.location.NearbyLocationsOnMap;
@@ -87,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         //do not remove these lines
-        //manager.addRandom("+905062285331",41.17, 29.61, 100);
+        //manager.addRandom("+905437780683",40.76, -73.97, 100);
     }
 
     @Override
@@ -98,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void initFriends(){
         friendsFragment=new UserListFragment();
+        friendsFragment.setListener(friendSelected);
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_main,friendsFragment).commit();
     }
 
@@ -332,4 +336,14 @@ public class MainActivity extends ActionBarActivity {
         AlertDialog alert1 = multChoiceDialog.create();
         alert1.show();
     }
+
+    private AdapterView.OnItemClickListener friendSelected=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            FriendsLastLocationsOnMap last=new FriendsLastLocationsOnMap();
+            last.position=position;
+            getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,last).commit();
+
+        }
+    };
 }

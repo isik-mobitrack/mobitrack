@@ -67,14 +67,14 @@ public class NearbyLocationsOnMap extends Fragment {
         }
     }
     private void setUpMap()  {
-
-
         PlacesTask placesTask = new PlacesTask();
         placesTask.execute();
 
     }
     private String downloadUrl() {
-        String strUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.173486,29.615364&radius=5000&types=hospital|police&sensor=true&key=AIzaSyCRTPt0M4d9-26B_MsGLDeTJXdpjlk7hdE";
+        Double myLat=MyLocation.getlatitude();
+        Double myLong=MyLocation.getlongitude();
+        String strUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+myLat+","+myLong+"&radius=5000&types=hospital|police&sensor=true&key=AIzaSyCRTPt0M4d9-26B_MsGLDeTJXdpjlk7hdE";
         String data = "";
         InputStream iStream = null;
         HttpURLConnection urlConnection = null;
