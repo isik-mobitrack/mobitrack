@@ -1,22 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_add"
-        android:title="@string/add_user"
-        android:icon="@drawable/ic_action_add"
-        android:orderInCategory="100"
-        app:showAsAction="always" />
     <item android:id="@+id/action_map_view"
         android:title="@string/map_view"
         android:icon="@drawable/ic_action_map"
         android:orderInCategory="100"
         app:showAsAction="always" />
-    <item android:id="@+id/action_list_view"
-        android:title="@string/map_view"
-        android:icon="@drawable/ic_action_list"
-        android:orderInCategory="100"
-        app:showAsAction="always"
-        android:visible="false"/>
+    <item android:id="@+id/action_emergency_places"
+        android:title="emergency"
+        android:icon="@drawable/icon_hospital"
+        app:showAsAction="always" />
     <item android:id="@+id/emergency_action"
         android:title="Emergency Button"
         android:icon="@drawable/ic_action_warning"

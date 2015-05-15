@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.view.Menu;
@@ -18,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
+import com.melnykov.fab.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -30,6 +32,7 @@ import com.tytogroup.mobitrack.location.NearbyLocationsOnMap;
 import com.tytogroup.mobitrack.user.AllFriendships;
 import com.tytogroup.mobitrack.user.AllUsers;
 import com.tytogroup.mobitrack.user.User;
+import com.tytogroup.mobitrack.user.UserAdapter;
 import com.tytogroup.mobitrack.user.UserListFragment;
 
 import java.util.ArrayList;
@@ -43,9 +46,12 @@ public class MainActivity extends ActionBarActivity {
     private UserListFragment friendsFragment;
     private FriendsOnMap friendsMap;
     private SharedPreferences pref;
-    private MenuItem toList;
     private MenuItem toMap;
+    private MenuItem toEmerg;
+    private MenuItem toMes;
     private AllFriendships friendships;
+    private FloatingActionButton fab;
+    private boolean hasBack=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+        ActionBar bar=getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary)));
 
         act=this;
         friendships=AllFriendships.getInstance();
@@ -89,6 +98,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        fab=(FloatingActionButton)findViewById(R.id.fab_activity_main);
+
         //do not remove these lines
         //manager.addRandom("+905437780683",40.76, -73.97, 100);
     }
@@ -102,16 +113,21 @@ public class MainActivity extends ActionBarActivity {
     private void initFriends(){
         friendsFragment=new UserListFragment();
         friendsFragment.setListener(friendSelected);
-        getSupportFragmentManager().beginTransaction().add(R.id.main_activity_main,friendsFragment).commit();
+        if(hasBack)
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_main, friendsFragment).commit();
+        else
+            getSupportFragmentManager().beginTransaction().add(R.id.main_activity_main, friendsFragment).commit();
+        friendsFragment.setAction(fab);
+        fab.setOnClickListener(actionClicked);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        toList=menu.findItem(R.id.action_list_view);
         toMap=menu.findItem(R.id.action_map_view);
-
+        toEmerg=menu.findItem(R.id.action_emergency_places);
+        toMes=menu.findItem(R.id.emergency_action);
         return true;
     }
 
@@ -122,15 +138,7 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_add) {
-            addFriend();
-            return true;
-        }else if(id==R.id.emergency_action){
-            /*Intent sendMessage=new Intent(MainActivity.this,SendSMSActivity.class);
-            startActivity(sendMessage);
-            return true;*/
-            //noinspection SimplifiableIfStatement
+        if(id==R.id.emergency_action){
             if (friendsFragment.getListAdapter().getCount()>0) {
                 if (friendships.getEmergencyFriends().size() == 0) {
                     CreatingEmergencyList();
@@ -141,28 +149,47 @@ public class MainActivity extends ActionBarActivity {
             }else{
                 Toast.makeText(getBaseContext(),"Please add a friend",Toast.LENGTH_LONG).show();
             }
-        }else if(id==R.id.action_list_view){
-            toMap.setVisible(true);
-            toList.setVisible(false);
-            getSupportFragmentManager().popBackStack();
         }else if(id==R.id.action_map_view){
-           /* if(friendsMap==null){
+            fab.hide();
+            hideMenu();
+            //if(friendsMap==null){
                 friendsMap=new FriendsOnMap();
-            }
-            toMap.setVisible(false);
-            toList.setVisible(true);*
-            getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,friendsMap).commit();
-       */
+            //}
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_main, friendsMap).commit();
+            hasBack=true;
+
+        }else if(id==R.id.action_emergency_places){
+            fab.hide();
+            hideMenu();
             NearbyLocationsOnMap nearLocations=new NearbyLocationsOnMap();
-            getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,nearLocations).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_main,nearLocations).commit();
+            hasBack=true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void hideMenu(){
+        toMes.setVisible(false);
+        toEmerg.setVisible(false);
+        toMap.setVisible(false);
+    }
+
+    private void showMenu(){
+        toMes.setVisible(true);
+        toEmerg.setVisible(true);
+        toMap.setVisible(true);
+    }
+
     @Override
     public void onBackPressed() {
-
+        if(hasBack){
+            showMenu();
+            fab.show();
+            initFriends();
+            hasBack=false;
+            return;
+        }
         super.onBackPressed();
     }
 
@@ -243,6 +270,10 @@ public class MainActivity extends ActionBarActivity {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(AllUsers.getUserForPhone(edit.getText().toString())!=null){
+                    Toast.makeText(getApplicationContext(),R.string.already_requested,Toast.LENGTH_LONG).show();
+                    return;
+                }
                 manager.checkUser(edit.getText().toString(),new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> list, ParseException e) {
@@ -340,10 +371,20 @@ public class MainActivity extends ActionBarActivity {
     private AdapterView.OnItemClickListener friendSelected=new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if(position>= UserAdapter.endFriend)
+                return;
             FriendsLastLocationsOnMap last=new FriendsLastLocationsOnMap();
             last.position=position;
-            getSupportFragmentManager().beginTransaction().addToBackStack("mobitrack").replace(R.id.main_activity_main,last).commit();
+            hasBack=true;
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_main,last).commit();
 
+        }
+    };
+
+    private View.OnClickListener actionClicked=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            addFriend();
         }
     };
 }

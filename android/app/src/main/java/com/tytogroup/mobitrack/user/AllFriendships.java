@@ -22,9 +22,64 @@ public class AllFriendships {
         return instance;
     }
 
+    public static ArrayList<Friendship> friends(){
+        ArrayList<Friendship> z=new ArrayList<>();
+        ArrayList<Friendship> t=new ArrayList<>();
+        for(int i=0;i<instance.friendships.size();i++){
+            switch (instance.getFriendStatus(i)){
+                case 0:
+                    z.add(instance.friendships.get(i));
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+                    t.add(instance.friendships.get(i));
+                    break;
+            }
+        }
+        ArrayList<Friendship> arr=new ArrayList<>();
+        for(int i=0;i<t.size();i++){
+            arr.add(t.get(i));
+        }
+        for(int i=0;i<z.size();i++){
+            arr.add(z.get(i));
+        }
+        return arr;
+    }
+
     public void addFriendship(String sender, String reciever, int status){
         Friendship f=new Friendship(sender,reciever, status);
         friendships.add(f);
+    }
+
+    public void reorder(){
+        ArrayList<Friendship> z=new ArrayList<>();
+        ArrayList<Friendship> o=new ArrayList<>();
+        ArrayList<Friendship> t=new ArrayList<>();
+        for(int i=0;i<friendships.size();i++){
+            switch (getFriendStatus(i)){
+                case 0:
+                    z.add(friendships.get(i));
+                    break;
+                case 1:
+                    o.add(friendships.get(i));
+                    break;
+                case 2:
+                    t.add(friendships.get(i));
+                    break;
+            }
+        }
+        friendships.clear();
+        for(int i=0;i<t.size();i++){
+            friendships.add(t.get(i));
+        }
+        for(int i=0;i<o.size();i++){
+            friendships.add(o.get(i));
+        }
+        for(int i=0;i<z.size();i++){
+            friendships.add(z.get(i));
+        }
     }
 
     /**
@@ -39,8 +94,12 @@ public class AllFriendships {
         friendships.clear();
     }
 
-    public String getFriendName(int index){
+    public String getFriendName(int index) {
         return AllUsers.getUserForPhone(friendships.get(index).getFriend()).username;
+    }
+
+    public int getFriendStatus(int index){
+        return friendships.get(index).status;
     }
     
     /**
@@ -126,9 +185,16 @@ public class AllFriendships {
         }
     }
 
-    public boolean isEmergency(int index){
-        for(int i=0;i<emergencies.size();i++){
-            if(emergencies.get(i)==index)
+    public static boolean isEmergency(String phone){
+        int index=0;
+        for(int i=0;i<instance.getCount();i++){
+            if(instance.getFriendPhone(i).equals(phone)){
+                index=i;
+                break;
+            }
+        }
+        for(int i=0;i<instance.emergencies.size();i++){
+            if(instance.emergencies.get(i)==index)
                 return true;
         }
         return false;

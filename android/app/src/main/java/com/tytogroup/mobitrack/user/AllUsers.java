@@ -53,6 +53,10 @@ public class AllUsers {
         users.add(u);
     }
 
+    public void setUser(int index, User u){
+        users.add(index,u);
+    }
+
     public void clear(){
         users.clear();
     }

@@ -29,6 +29,7 @@
     <string name="no_user">There is no user with the number you give</string>
     <string name="add_error">There is an error while adding your friend</string>
     <string name="sended_friendship_request">Friendship request was sent to %1$s</string>
+    <string name="already_requested">You already have a relation with given number</string>
     <string name="location_services_error">Your current location is required for this application to work properly.</string>
 
     <!-- user menu -->

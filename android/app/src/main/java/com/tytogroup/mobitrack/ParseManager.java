@@ -4,6 +4,7 @@ import android.location.Location;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -92,37 +93,38 @@ public class ParseManager {
         AllUsers.getInstance().clear();
 
          query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(final List<ParseObject> list, ParseException e) {
-                if(e!=null){
-                    callback.done(list, e);
-                    return;
-                }
+             @Override
+             public void done(final List<ParseObject> list, ParseException e) {
+                 if (e != null) {
+                     callback.done(list, e);
+                     return;
+                 }
 
-                for (int i=0;i<list.size();i++){
-                    ParseObject p=list.get(i);
-                    friendships.addFriendship(AllUsers.deviceUser.phone,p.getString(Friendship.RECIEVER),p.getInt(Friendship.STATUS));
-                }
+                 for (int i = 0; i < list.size(); i++) {
+                     ParseObject p = list.get(i);
+                     friendships.addFriendship(AllUsers.deviceUser.phone, p.getString(Friendship.RECIEVER), p.getInt(Friendship.STATUS));
+                 }
 
-                ParseQuery query1=ParseQuery.getQuery(FRIENDSHIP);
-                query1.whereEqualTo(Friendship.RECIEVER, phone);
-                query1.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> liste, ParseException e) {
-                        if(e!=null){
-                            callback.done(list, e);
-                            return;
-                        }
-                        for(int i=0;i<liste.size();i++){
-                            list.add(liste.get(i));
-                            ParseObject p=liste.get(i);
-                            friendships.addFriendship(p.getString(Friendship.SENDER),AllUsers.deviceUser.phone,p.getInt(Friendship.STATUS));
-                        }
-                        setUsersForFriendship(callback);
-                    }
-                });
-            }
-        });
+                 ParseQuery query1 = ParseQuery.getQuery(FRIENDSHIP);
+                 query1.whereEqualTo(Friendship.RECIEVER, phone);
+                 query1.findInBackground(new FindCallback<ParseObject>() {
+                     @Override
+                     public void done(List<ParseObject> liste, ParseException e) {
+                         if (e != null) {
+                             callback.done(list, e);
+                             return;
+                         }
+                         for (int i = 0; i < liste.size(); i++) {
+                             list.add(liste.get(i));
+                             ParseObject p = liste.get(i);
+                             friendships.addFriendship(p.getString(Friendship.SENDER), AllUsers.deviceUser.phone, p.getInt(Friendship.STATUS));
+                         }
+                         friendships.reorder();
+                         setUsersForFriendship(callback);
+                     }
+                 });
+             }
+         });
     }
 
     private void setUsersForFriendship(final FindCallback callback){
@@ -131,7 +133,7 @@ public class ParseManager {
         ArrayList<String> phones=friendships.getFriendPhones();
 
         ParseQuery<ParseObject> query=new ParseQuery(USER);
-        query.whereContainedIn(User.PHONE,phones);
+        query.whereContainedIn(User.PHONE, phones);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
@@ -163,6 +165,25 @@ public class ParseManager {
     public void replyFriendship(ParseObject parseObject, int reply, SaveCallback callback){
         parseObject.put(Friendship.STATUS, reply);
         parseObject.saveInBackground(callback);
+    }
+
+    public void replyFriendship(boolean sender, String phone, final int reply, final SaveCallback callback){
+        ParseQuery q=ParseQuery.getQuery(FRIENDSHIP);
+        if(sender)
+            q.whereEqualTo(Friendship.SENDER,phone);
+        else
+            q.whereEqualTo(Friendship.RECIEVER,phone);
+        q.getFirstInBackground(new GetCallback() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+                if(e!=null){
+                    e.printStackTrace();
+                    return;
+                }
+                parseObject.put(Friendship.STATUS,reply);
+                parseObject.saveInBackground(callback);
+            }
+        });
     }
 
     /**
